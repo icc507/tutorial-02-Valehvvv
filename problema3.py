@@ -9,18 +9,23 @@
 #         20 30 90 90 8 5 90
 #La salida debe ser
 #         [20, [8, [5, [], [], []], [], []], [], [30, [], [], [90, [], [90, [], [90, [], [], []], []], []]]]
-arbol= []
-numeros= input().split()
+def arbolBinario(numero):
+    return [numero, [], [], []]
+
+def insertaEnArbolBinario(arbol, numero):
+    if arbol == []:
+        arbol += arbolBinario(numero)
+    elif arbol[0] == numero:
+        insertaEnArbolBinario(arbol[2], numero)
+    elif numero < arbol[0]:
+        insertaEnArbolBinario(arbol[1], numero)
+    else:
+        insertaEnArbolBinario(arbol[3], numero)
+    return arbol 
+
+numeros = input().split()
+arbol = []
 for numero in numeros:
-  if arbol==[]:
-    arbol = [numero, [], [], []]
-  elif arbol[0]== numero:
-    arbol[2].append(numero)
-  elif numero < arbol[0]:
-    nuevo_nodo = [numero, [], [], []]
-    arbol[1].append(nuevo_nodo)
-  elif numero > arbol[0]:
-    nuevo_nodo = [numero, [], [], []]
-    arbol[3].append(nuevo_nodo)
+    arbol = insertaEnArbolBinario(arbol, int(numero)) 
 
 print(arbol)
