@@ -8,6 +8,7 @@
 #La salida debe ser
 #         (77, 'jiji', 'hola', 90, 20)
 
-tupla = tuple(input().split())
+tupla = input().split()
+tupla = tuple(int(x) if x.isdigit() else x for x in tupla)
 tupla_invertida = tupla[::-1]
 print(tupla_invertida)
