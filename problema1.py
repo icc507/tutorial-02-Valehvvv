@@ -12,8 +12,10 @@
 t1 = input().split()
 t2 = input().split()
 
-t1 = tuple(t1)
-t2 = tuple(t2)
+t1 = tuple(int(x) if x.isdigit() else x for x in t1)
+
+t2 = tuple(int(x) if x.isdigit() else x for x in t2)
+
 resultado = t2 + t1 + t2
 
 print(resultado)
